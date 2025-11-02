@@ -1,0 +1,36 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "OnionTemplate.Application/1.0.0": {
+        "dependencies": {
+          "OnionTemplate.Core": "1.0.0"
+        },
+        "runtime": {
+          "OnionTemplate.Application.dll": {}
+        }
+      },
+      "OnionTemplate.Core/1.0.0": {
+        "runtime": {
+          "OnionTemplate.Core.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "OnionTemplate.Application/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "OnionTemplate.Core/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

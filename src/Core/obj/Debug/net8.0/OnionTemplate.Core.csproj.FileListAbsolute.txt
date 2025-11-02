@@ -1,0 +1,11 @@
+F:\3omda\dev\src\Core\bin\Debug\net8.0\OnionTemplate.Core.deps.json
+F:\3omda\dev\src\Core\bin\Debug\net8.0\OnionTemplate.Core.dll
+F:\3omda\dev\src\Core\bin\Debug\net8.0\OnionTemplate.Core.pdb
+F:\3omda\dev\src\Core\obj\Debug\net8.0\OnionTemplate.Core.GeneratedMSBuildEditorConfig.editorconfig
+F:\3omda\dev\src\Core\obj\Debug\net8.0\OnionTemplate.Core.AssemblyInfoInputs.cache
+F:\3omda\dev\src\Core\obj\Debug\net8.0\OnionTemplate.Core.AssemblyInfo.cs
+F:\3omda\dev\src\Core\obj\Debug\net8.0\OnionTemplate.Core.csproj.CoreCompileInputs.cache
+F:\3omda\dev\src\Core\obj\Debug\net8.0\OnionTemplate.Core.dll
+F:\3omda\dev\src\Core\obj\Debug\net8.0\refint\OnionTemplate.Core.dll
+F:\3omda\dev\src\Core\obj\Debug\net8.0\OnionTemplate.Core.pdb
+F:\3omda\dev\src\Core\obj\Debug\net8.0\ref\OnionTemplate.Core.dll

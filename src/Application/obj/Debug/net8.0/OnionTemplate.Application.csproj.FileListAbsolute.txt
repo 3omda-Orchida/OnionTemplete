@@ -1,0 +1,15 @@
+F:\3omda\dev\src\Application\bin\Debug\net8.0\OnionTemplate.Application.deps.json
+F:\3omda\dev\src\Application\bin\Debug\net8.0\OnionTemplate.Application.dll
+F:\3omda\dev\src\Application\bin\Debug\net8.0\OnionTemplate.Application.pdb
+F:\3omda\dev\src\Application\bin\Debug\net8.0\OnionTemplate.Core.dll
+F:\3omda\dev\src\Application\bin\Debug\net8.0\OnionTemplate.Core.pdb
+F:\3omda\dev\src\Application\obj\Debug\net8.0\OnionTemplate.Application.csproj.AssemblyReference.cache
+F:\3omda\dev\src\Application\obj\Debug\net8.0\OnionTemplate.Application.GeneratedMSBuildEditorConfig.editorconfig
+F:\3omda\dev\src\Application\obj\Debug\net8.0\OnionTemplate.Application.AssemblyInfoInputs.cache
+F:\3omda\dev\src\Application\obj\Debug\net8.0\OnionTemplate.Application.AssemblyInfo.cs
+F:\3omda\dev\src\Application\obj\Debug\net8.0\OnionTemplate.Application.csproj.CoreCompileInputs.cache
+F:\3omda\dev\src\Application\obj\Debug\net8.0\OnionTem.EC9ACC56.Up2Date
+F:\3omda\dev\src\Application\obj\Debug\net8.0\OnionTemplate.Application.dll
+F:\3omda\dev\src\Application\obj\Debug\net8.0\refint\OnionTemplate.Application.dll
+F:\3omda\dev\src\Application\obj\Debug\net8.0\OnionTemplate.Application.pdb
+F:\3omda\dev\src\Application\obj\Debug\net8.0\ref\OnionTemplate.Application.dll
