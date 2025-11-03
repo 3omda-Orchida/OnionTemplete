@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "F:\\3omda\\dev\\src\\Application\\OnionTemplate.Application.csproj": {}
+    "C:\\Users\\Lil3o\\OneDrive\\Desktop\\3@Orchida\\OnionTemplete\\src\\Application\\OnionTemplate.Application.csproj": {}
   },
   "projects": {
-    "F:\\3omda\\dev\\src\\Application\\OnionTemplate.Application.csproj": {
+    "C:\\Users\\Lil3o\\OneDrive\\Desktop\\3@Orchida\\OnionTemplete\\src\\Application\\OnionTemplate.Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\3omda\\dev\\src\\Application\\OnionTemplate.Application.csproj",
+        "projectUniqueName": "C:\\Users\\Lil3o\\OneDrive\\Desktop\\3@Orchida\\OnionTemplete\\src\\Application\\OnionTemplate.Application.csproj",
         "projectName": "OnionTemplate.Application",
-        "projectPath": "F:\\3omda\\dev\\src\\Application\\OnionTemplate.Application.csproj",
-        "packagesPath": "C:\\Users\\orchida\\.nuget\\packages\\",
-        "outputPath": "F:\\3omda\\dev\\src\\Application\\obj\\",
+        "projectPath": "C:\\Users\\Lil3o\\OneDrive\\Desktop\\3@Orchida\\OnionTemplete\\src\\Application\\OnionTemplate.Application.csproj",
+        "packagesPath": "C:\\Users\\Lil3o\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Lil3o\\OneDrive\\Desktop\\3@Orchida\\OnionTemplete\\src\\Application\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\orchida\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Lil3o\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -28,8 +32,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "F:\\3omda\\dev\\src\\Core\\OnionTemplate.Core.csproj": {
-                "projectPath": "F:\\3omda\\dev\\src\\Core\\OnionTemplate.Core.csproj"
+              "C:\\Users\\Lil3o\\OneDrive\\Desktop\\3@Orchida\\OnionTemplete\\src\\Core\\OnionTemplate.Core.csproj": {
+                "projectPath": "C:\\Users\\Lil3o\\OneDrive\\Desktop\\3@Orchida\\OnionTemplete\\src\\Core\\OnionTemplate.Core.csproj"
               }
             }
           }
@@ -43,11 +47,38 @@
           "enableAudit": "true",
           "auditLevel": "low",
           "auditMode": "direct"
-        }
+        },
+        "SdkAnalysisLevel": "9.0.200"
       },
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
+          "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[15.1.0, )"
+            },
+            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[12.0.1, )"
+            },
+            "FluentValidation": {
+              "target": "Package",
+              "version": "[12.1.0, )"
+            },
+            "FluentValidation.DependencyInjectionExtensions": {
+              "target": "Package",
+              "version": "[12.1.0, )"
+            },
+            "MediatR": {
+              "target": "Package",
+              "version": "[13.1.0, )"
+            },
+            "MediatR.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[11.1.0, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -59,26 +90,44 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[8.0.15, 8.0.15]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[8.0.15, 8.0.15]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[8.0.15, 8.0.15]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.206/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.203/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "F:\\3omda\\dev\\src\\Core\\OnionTemplate.Core.csproj": {
+    "C:\\Users\\Lil3o\\OneDrive\\Desktop\\3@Orchida\\OnionTemplete\\src\\Core\\OnionTemplate.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\3omda\\dev\\src\\Core\\OnionTemplate.Core.csproj",
+        "projectUniqueName": "C:\\Users\\Lil3o\\OneDrive\\Desktop\\3@Orchida\\OnionTemplete\\src\\Core\\OnionTemplate.Core.csproj",
         "projectName": "OnionTemplate.Core",
-        "projectPath": "F:\\3omda\\dev\\src\\Core\\OnionTemplate.Core.csproj",
-        "packagesPath": "C:\\Users\\orchida\\.nuget\\packages\\",
-        "outputPath": "F:\\3omda\\dev\\src\\Core\\obj\\",
+        "projectPath": "C:\\Users\\Lil3o\\OneDrive\\Desktop\\3@Orchida\\OnionTemplete\\src\\Core\\OnionTemplate.Core.csproj",
+        "packagesPath": "C:\\Users\\Lil3o\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Lil3o\\OneDrive\\Desktop\\3@Orchida\\OnionTemplete\\src\\Core\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\orchida\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Lil3o\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -103,11 +152,22 @@
           "enableAudit": "true",
           "auditLevel": "low",
           "auditMode": "direct"
-        }
+        },
+        "SdkAnalysisLevel": "9.0.200"
       },
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
+          "dependencies": {
+            "Ardalis.GuardClauses": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
+            "FluentResults": {
+              "target": "Package",
+              "version": "[4.0.0, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -119,12 +179,26 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[8.0.15, 8.0.15]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[8.0.15, 8.0.15]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[8.0.15, 8.0.15]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.206/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.203/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

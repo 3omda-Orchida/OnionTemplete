@@ -37,3 +37,14 @@ F:\3omda\dev\src\WebAPI\obj\Debug\net8.0\refint\OnionTemplate.WebAPI.dll
 F:\3omda\dev\src\WebAPI\obj\Debug\net8.0\OnionTemplate.WebAPI.pdb
 F:\3omda\dev\src\WebAPI\obj\Debug\net8.0\OnionTemplate.WebAPI.genruntimeconfig.cache
 F:\3omda\dev\src\WebAPI\obj\Debug\net8.0\ref\OnionTemplate.WebAPI.dll
+C:\Users\Lil3o\OneDrive\Desktop\3@Orchida\OnionTemplete\src\WebAPI\obj\Debug\net8.0\OnionTemplate.WebAPI.csproj.AssemblyReference.cache
+C:\Users\Lil3o\OneDrive\Desktop\3@Orchida\OnionTemplete\src\WebAPI\obj\Debug\net8.0\OnionTemplate.WebAPI.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Lil3o\OneDrive\Desktop\3@Orchida\OnionTemplete\src\WebAPI\obj\Debug\net8.0\OnionTemplate.WebAPI.AssemblyInfoInputs.cache
+C:\Users\Lil3o\OneDrive\Desktop\3@Orchida\OnionTemplete\src\WebAPI\obj\Debug\net8.0\OnionTemplate.WebAPI.AssemblyInfo.cs
+C:\Users\Lil3o\OneDrive\Desktop\3@Orchida\OnionTemplete\src\WebAPI\obj\Debug\net8.0\OnionTemplate.WebAPI.csproj.CoreCompileInputs.cache
+C:\Users\Lil3o\OneDrive\Desktop\3@Orchida\OnionTemplete\src\WebAPI\obj\Debug\net8.0\OnionTemplate.WebAPI.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\Lil3o\OneDrive\Desktop\3@Orchida\OnionTemplete\src\WebAPI\obj\Debug\net8.0\OnionTemplate.WebAPI.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Lil3o\OneDrive\Desktop\3@Orchida\OnionTemplete\src\WebAPI\obj\Debug\net8.0\OnionTemplate.WebAPI.sourcelink.json
+C:\Users\Lil3o\OneDrive\Desktop\3@Orchida\OnionTemplete\src\WebAPI\obj\Debug\net8.0\OnionTemplate.WebAPI.dll
+C:\Users\Lil3o\OneDrive\Desktop\3@Orchida\OnionTemplete\src\WebAPI\obj\Debug\net8.0\refint\OnionTemplate.WebAPI.dll
+C:\Users\Lil3o\OneDrive\Desktop\3@Orchida\OnionTemplete\src\WebAPI\obj\Debug\net8.0\OnionTemplate.WebAPI.pdb

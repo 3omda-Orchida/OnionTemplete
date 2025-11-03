@@ -9,3 +9,16 @@ F:\3omda\dev\src\Core\obj\Debug\net8.0\OnionTemplate.Core.dll
 F:\3omda\dev\src\Core\obj\Debug\net8.0\refint\OnionTemplate.Core.dll
 F:\3omda\dev\src\Core\obj\Debug\net8.0\OnionTemplate.Core.pdb
 F:\3omda\dev\src\Core\obj\Debug\net8.0\ref\OnionTemplate.Core.dll
+C:\Users\Lil3o\OneDrive\Desktop\3@Orchida\OnionTemplete\src\Core\bin\Debug\net8.0\OnionTemplate.Core.deps.json
+C:\Users\Lil3o\OneDrive\Desktop\3@Orchida\OnionTemplete\src\Core\bin\Debug\net8.0\OnionTemplate.Core.dll
+C:\Users\Lil3o\OneDrive\Desktop\3@Orchida\OnionTemplete\src\Core\bin\Debug\net8.0\OnionTemplate.Core.pdb
+C:\Users\Lil3o\OneDrive\Desktop\3@Orchida\OnionTemplete\src\Core\obj\Debug\net8.0\OnionTemplate.Core.csproj.AssemblyReference.cache
+C:\Users\Lil3o\OneDrive\Desktop\3@Orchida\OnionTemplete\src\Core\obj\Debug\net8.0\OnionTemplate.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Lil3o\OneDrive\Desktop\3@Orchida\OnionTemplete\src\Core\obj\Debug\net8.0\OnionTemplate.Core.AssemblyInfoInputs.cache
+C:\Users\Lil3o\OneDrive\Desktop\3@Orchida\OnionTemplete\src\Core\obj\Debug\net8.0\OnionTemplate.Core.AssemblyInfo.cs
+C:\Users\Lil3o\OneDrive\Desktop\3@Orchida\OnionTemplete\src\Core\obj\Debug\net8.0\OnionTemplate.Core.csproj.CoreCompileInputs.cache
+C:\Users\Lil3o\OneDrive\Desktop\3@Orchida\OnionTemplete\src\Core\obj\Debug\net8.0\OnionTemplate.Core.sourcelink.json
+C:\Users\Lil3o\OneDrive\Desktop\3@Orchida\OnionTemplete\src\Core\obj\Debug\net8.0\OnionTemplate.Core.dll
+C:\Users\Lil3o\OneDrive\Desktop\3@Orchida\OnionTemplete\src\Core\obj\Debug\net8.0\refint\OnionTemplate.Core.dll
+C:\Users\Lil3o\OneDrive\Desktop\3@Orchida\OnionTemplete\src\Core\obj\Debug\net8.0\OnionTemplate.Core.pdb
+C:\Users\Lil3o\OneDrive\Desktop\3@Orchida\OnionTemplete\src\Core\obj\Debug\net8.0\ref\OnionTemplate.Core.dll
