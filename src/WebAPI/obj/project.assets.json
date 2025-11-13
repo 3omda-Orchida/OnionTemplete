@@ -4466,24 +4466,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Lil3o\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\orchida\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Lil3o\\OneDrive\\Desktop\\3@Orchida\\OnionTemplete\\src\\WebAPI\\OnionTemplate.WebAPI.csproj",
+      "projectUniqueName": "F:\\3omda\\dev\\OnionTemplete\\src\\WebAPI\\OnionTemplate.WebAPI.csproj",
       "projectName": "OnionTemplate.WebAPI",
-      "projectPath": "C:\\Users\\Lil3o\\OneDrive\\Desktop\\3@Orchida\\OnionTemplete\\src\\WebAPI\\OnionTemplate.WebAPI.csproj",
-      "packagesPath": "C:\\Users\\Lil3o\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Lil3o\\OneDrive\\Desktop\\3@Orchida\\OnionTemplete\\src\\WebAPI\\obj\\",
+      "projectPath": "F:\\3omda\\dev\\OnionTemplete\\src\\WebAPI\\OnionTemplate.WebAPI.csproj",
+      "packagesPath": "C:\\Users\\orchida\\.nuget\\packages\\",
+      "outputPath": "F:\\3omda\\dev\\OnionTemplete\\src\\WebAPI\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\Lil3o\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\orchida\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -4497,11 +4492,11 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\Lil3o\\OneDrive\\Desktop\\3@Orchida\\OnionTemplete\\src\\Application\\OnionTemplate.Application.csproj": {
-              "projectPath": "C:\\Users\\Lil3o\\OneDrive\\Desktop\\3@Orchida\\OnionTemplete\\src\\Application\\OnionTemplate.Application.csproj"
+            "F:\\3omda\\dev\\OnionTemplete\\src\\Application\\OnionTemplate.Application.csproj": {
+              "projectPath": "F:\\3omda\\dev\\OnionTemplete\\src\\Application\\OnionTemplate.Application.csproj"
             },
-            "C:\\Users\\Lil3o\\OneDrive\\Desktop\\3@Orchida\\OnionTemplete\\src\\Infrastructure\\OnionTemplate.Infrastructure.csproj": {
-              "projectPath": "C:\\Users\\Lil3o\\OneDrive\\Desktop\\3@Orchida\\OnionTemplete\\src\\Infrastructure\\OnionTemplate.Infrastructure.csproj"
+            "F:\\3omda\\dev\\OnionTemplete\\src\\Infrastructure\\OnionTemplate.Infrastructure.csproj": {
+              "projectPath": "F:\\3omda\\dev\\OnionTemplete\\src\\Infrastructure\\OnionTemplate.Infrastructure.csproj"
             }
           }
         }
@@ -4515,8 +4510,7 @@
         "enableAudit": "true",
         "auditLevel": "low",
         "auditMode": "direct"
-      },
-      "SdkAnalysisLevel": "9.0.200"
+      }
     },
     "frameworks": {
       "net8.0": {
@@ -4566,24 +4560,6 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "downloadDependencies": [
-          {
-            "name": "Microsoft.AspNetCore.App.Ref",
-            "version": "[8.0.15, 8.0.15]"
-          },
-          {
-            "name": "Microsoft.NETCore.App.Host.win-x64",
-            "version": "[8.0.15, 8.0.15]"
-          },
-          {
-            "name": "Microsoft.NETCore.App.Ref",
-            "version": "[8.0.15, 8.0.15]"
-          },
-          {
-            "name": "Microsoft.WindowsDesktop.App.Ref",
-            "version": "[8.0.15, 8.0.15]"
-          }
-        ],
         "frameworkReferences": {
           "Microsoft.AspNetCore.App": {
             "privateAssets": "none"
@@ -4592,7 +4568,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.203/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.206/PortableRuntimeIdentifierGraph.json"
       }
     }
   },
@@ -4601,8 +4577,8 @@
       "code": "NU1608",
       "level": "Warning",
       "warningLevel": 1,
-      "message": "Detected package version outside of dependency constraint: AutoMapper.Extensions.Microsoft.DependencyInjection 12.0.1 requires AutoMapper (= 12.0.1) but version AutoMapper 15.1.0 was resolved.",
-      "libraryId": "AutoMapper",
+      "message": "Detected package version outside of dependency constraint: MediatR.Extensions.Microsoft.DependencyInjection 11.1.0 requires MediatR (>= 11.0.0 && < 12.0.0) but version MediatR 13.1.0 was resolved.",
+      "libraryId": "MediatR",
       "targetGraphs": [
         "net8.0"
       ]
@@ -4611,8 +4587,8 @@
       "code": "NU1608",
       "level": "Warning",
       "warningLevel": 1,
-      "message": "Detected package version outside of dependency constraint: MediatR.Extensions.Microsoft.DependencyInjection 11.1.0 requires MediatR (>= 11.0.0 && < 12.0.0) but version MediatR 13.1.0 was resolved.",
-      "libraryId": "MediatR",
+      "message": "Detected package version outside of dependency constraint: AutoMapper.Extensions.Microsoft.DependencyInjection 12.0.1 requires AutoMapper (= 12.0.1) but version AutoMapper 15.1.0 was resolved.",
+      "libraryId": "AutoMapper",
       "targetGraphs": [
         "net8.0"
       ]
