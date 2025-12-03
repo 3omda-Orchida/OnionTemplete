@@ -1,1 +1,1514 @@
-ho 
+				**Onion Architecture Template**
+
+ 						1.Overview
+1.1 Introduction
+
+This project provides a ready-to-use Onion Architecture template for building scalable, maintainable, and testable .NET applications.
+The template follows strict separation of concerns, ensuring that the core business logic remains independent from external frameworks, infrastructure, and user interfaces.
+
+It is designed to help developers quickly start new enterprise-grade applications with a clean architecture, built on modern .NET 8 practices and widely-used libraries.
+
+1.2 What is Onion Architecture?
+
+Onion Architecture is an architectural pattern that organizes a solution into concentric layers, where the Core (domain layer) is at the center and is completely independent of frameworks and external concerns.
+
+The main principles include:
+
+Dependency Rule: outer layers depend on inner layers, never the opposite.
+
+Core-centric design: business logic and domain rules are isolated and framework-agnostic.
+
+Testability: the design encourages high test coverage for business logic.
+
+Infrastructure isolation: databases, external services, and frameworks exist at the edges.
+
+1.3 Purpose of This Template
+
+This template aims to:
+
+Provide a clean and extensible starting point for .NET projects.
+
+Enforce Onion Architecture principles using a pre-organized folder and project structure.
+
+Reduce repetitive setup tasks in new projects.
+
+Standardize best practices such as MediatR, FluentValidation, EF Core, and AutoMapper.
+
+Ensure long-term maintainability and flexibility as the system grows.
+
+1.4 Key Layers in This Template
+
+The solution is divided into four independent layers, each with clear responsibilities.
+
+1. Core Layer
+
+The Core layer represents the heart of the system.
+It contains:
+
+Entities
+
+Value Objects
+
+Domain logic
+
+Guard clauses
+
+FluentResults for operation outcomes
+
+Packages used:
+
+Ardalis.GuardClauses
+
+FluentResults
+
+Dependencies:
+✔ Has no dependencies on other layers (pure domain).
+
+2. Application Layer
+
+The Application layer contains the use-case logic of the system.
+It orchestrates operations between the domain and infrastructure via abstraction.
+
+It includes:
+
+Use Cases / Handlers (MediatR)
+
+DTOs
+
+Application services
+
+Validation rules
+
+Mapping profiles
+
+Packages used:
+
+AutoMapper
+
+MediatR
+
+FluentValidation
+
+Dependencies:
+✔ Depends on Core
+✖ Does not depend on Infrastructure or WebAPI
+
+3. Infrastructure Layer
+
+The Infrastructure layer contains external concerns such as:
+
+Database (EF Core) implementations
+
+Repositories
+
+Email services (MailKit)
+
+Logging
+
+Configuration & external integrations
+
+Packages used:
+
+EF Core (SqlServer, Tools, Design)
+
+MailKit
+
+Microsoft.Extensions.*
+
+Dependencies:
+✔ Depends on Core
+✔ Depends on Application (to implement interfaces)
+✖ Does not depend on WebAPI
+
+4. WebAPI Layer
+
+This is the application's presentation layer — the outermost ring.
+
+It includes:
+
+Controllers
+
+Swagger/OpenAPI
+
+Authentication & Authorization
+
+API Middlewares
+
+CORS setup
+
+Dependency Injection setup
+
+Packages used:
+
+Swashbuckle (Swagger)
+
+Microsoft.AspNetCore.*
+
+Newtonsoft.Json
+
+JWT & Identity packages
+
+Dependencies:
+✔ Depends on Application
+✔ Depends on Infrastructure
+✖ Does not depend on Core directly (best practice)
+
+1.5 Dependency Direction Summary
+
+Here is the dependency flow enforced by the architecture:
+
+          WebAPI
+             ↓
+      Infrastructure
+             ↓
+        Application
+             ↓
+            Core
+
+
+✔ Dependencies always point inward
+✔ Core knows nothing about other layers
+✔ Outer layers implement inner layer abstractions
+				**2. Project Structure
+
+2.1 Solution Layout**
+
+The solution is organized into four main projects, each representing a layer in the Onion Architecture.
+This structure ensures strict separation of concerns and enforces the dependency direction from the outer layers inward.
+
+OnionTemplate.sln
+│
+├── Core
+│   └── OnionTemplate.Core.csproj
+│
+├── Application
+│   └── OnionTemplate.Application.csproj
+│
+├── Infrastructure
+│   └── OnionTemplate.Infrastructure.csproj
+│
+└── WebAPI
+    **└── OnionTemplate.WebAPI.csproj**
+
+
+
+
+
+
+
+Each project has a single, clear responsibility and communicates only with the layers beneath it.
+
+2.2 Layers Overview
+Core Layer
+
+Purpose: Contains the domain model and business rules.
+Contents typically include:
+
+Entities
+
+Value Objects
+
+Enums
+
+Domain Events (if applicable)
+
+Business rules / Guards
+
+Shared domain contracts
+
+Dependencies:
+❌ No external project dependencies.
+✔ This is the most stable and framework-independent layer.
+
+Application Layer
+
+Purpose: Implements application logic, orchestrates domain operations, and defines contracts for Infrastructure.
+Contents include:
+
+MediatR Command & Query handlers
+
+Interfaces for repositories and services
+
+DTOs (Requests, Responses)
+
+Mapping profiles (AutoMapper)
+
+Validation rules (FluentValidation)
+
+Dependencies:
+✔ Depends on Core
+❌ Does not depend on Infrastructure or WebAPI
+
+Infrastructure Layer
+
+Purpose: Implements everything defined in the Application layer.
+This is where all external frameworks and services are connected.
+
+Contents include:
+
+EF Core DbContext
+
+Repository implementations
+
+Email service implementations
+
+External API integrations
+
+Configuration providers
+
+Logging implementations
+
+Migrations
+
+Dependencies:
+✔ References Application
+✔ References Core
+❌ Does not depend on WebAPI
+(This keeps infrastructure reusable in other front-ends if needed.)
+
+WebAPI Layer
+
+Purpose: Exposes the application to the outside world through HTTP endpoints.
+This is the outermost layer in the onion.
+
+Contents include:
+
+Controllers
+
+Dependency Injection setup
+
+Exception Handling middleware
+
+Swagger/OpenAPI config
+
+Authentication & Authorization
+
+Application startup configurations
+
+Global Filters
+
+JSON serialization (Newtonsoft.Json)
+
+Dependencies:
+✔ References Application
+✔ References Infrastructure
+
+2.3 Dependencies Between Layers
+
+The dependency direction strictly follows Onion Architecture rules:
+
+WebAPI        -> Application
+WebAPI        -> Infrastructure
+Infrastructure -> Application
+Application   -> Core
+
+
+Allowed Dependencies:
+
+Layer	Can Reference
+WebAPI	Application, Infrastructure
+Infrastructure	Application, Core
+Application	Core
+Core	Nothing
+
+Not Allowed:
+
+Core → Application
+
+Application → Infrastructure
+
+Infrastructure → WebAPI
+
+This guarantees business logic is always independent and reusable.
+
+2.4 Folder Structure Inside Each Project
+Core
+Core
+│── Entities/
+│── ValueObjects/
+│── Enums/
+│── Exceptions/
+│── Results/
+│── Guards/
+
+Application
+Application
+│── Features/
+│     ├── Users/
+│     │     ├── Commands/
+│     │     └── Queries/
+│     └── [OtherModules]/
+│── Interfaces/
+│── DTOs/
+│── Behaviors/ (optional)
+│── Mappings/
+│── Validators/
+
+Infrastructure
+Infrastructure
+│── Persistence/
+│     ├── ApplicationDbContext.cs
+│     ├── Configurations/
+│     ├── Repositories/
+│     └── Migrations/
+│── Services/
+│── External/
+│── Emails/
+│── Logging/
+
+WebAPI
+WebAPI
+│── Controllers/
+│── Middlewares/
+│── DependencyInjection/
+│── Configurations/
+│── Filters/
+│── Properties/
+│── wwwroot/
+
+--------------------------------------------------------------------
+3. Domain Layer (Core)
+3.1 Purpose of the Domain Layer
+
+The Domain Layer represents the innermost and most important layer of the entire architecture.
+It contains the pure business logic, independent from frameworks, databases, UI, or external systems.
+
+This layer answers the question:
+
+“What does the system do at its core, regardless of how or where it runs?”
+
+It is completely stable, framework-agnostic, and has no external dependencies.
+
+3.2 Key Responsibilities
+
+The Domain Layer defines and protects the core business rules of the application.
+
+It is responsible for:
+
+Defining domain models (Entities, Value Objects)
+
+Enforcing domain invariants
+
+Expressing computations and decisions
+
+Encapsulating business rules
+
+Raising domain-specific errors or results
+
+No business rule should ever be placed in Application, Infrastructure, or WebAPI layers.
+
+3.3 Entities
+
+Entities are the primary domain models with identity.
+They represent concepts that persist over time and are usually stored in a database (e.g., User, Order, Product).
+
+Typical characteristics:
+
+Have an Id (GUID, int, long…)
+
+Contain business logic, not just data
+
+Can enforce validation through guards or methods
+
+Should never contain infrastructure concerns (e.g., EF Core attributes)
+
+Example responsibilities:
+
+Calculating totals
+
+Updating state through methods
+
+Controlling their own invariants
+
+Common folder structure:
+
+Core/Entities/
+    **User.cs**
+
+    **Order.cs**
+
+    **Product.cs**
+
+
+
+
+3.4 Value Objects
+
+Value Objects are immutable domain objects without identity.
+They represent a value rather than an entity (e.g., Email, Money, Address).
+
+Characteristics:
+
+Immutable
+
+Equality is based on values, not identity
+
+Represent small but important business concepts
+
+Great for encapsulating domain validation
+
+Example folder:
+
+Core/ValueObjects/
+    **Email.cs**
+
+    **Money.cs**
+
+    **DateRange.cs**
+
+
+
+
+
+
+
+A ValueObject ensures correctness. For example, an Email value object can guarantee valid email format at creation time.
+
+3.5 Domain Events (Optional)
+
+Domain events represent something meaningful that has occurred within the domain
+(e.g., UserRegistered, OrderPlaced).
+
+They:
+
+Help decouple business logic
+
+Can be handled in Application layer
+
+Are not required, but supported by the architecture
+
+If used, they may be placed under:
+
+Core/Events/
+
+3.6 Domain Interfaces
+
+In Onion Architecture, the Domain layer can expose interfaces that define business-internal contracts (if needed).
+
+For example:
+
+IRepository<TEntity>
+
+IAggregateRoot marker interface
+
+IDomainService
+
+These interfaces define behavior that the Application or Infrastructure layers can implement, without forcing the Domain to depend on them.
+
+Example folder:
+
+Core/Interfaces/
+    **IRepository.cs**
+
+    **IAggregateRoot.cs**
+
+
+
+
+3.7 Domain Rules & Policies
+
+Domain rules enforce the business correctness at the core level.
+They must not depend on external packages.
+
+Your template uses Ardalis.GuardClauses for guard validations and FluentResults for result abstraction, helping keep domain logic clean.
+
+Typical rules can include:
+
+"An order must have at least one item"
+
+"Email must be valid"
+
+"User must be active before performing an action"
+
+Examples:
+
+Core/Guards/
+Core/Exceptions/
+Core/Results/
+
+3.8 Technologies Used in the Domain Layer
+
+The domain layer intentionally uses minimal and safe dependencies:
+
+Package	Purpose
+Ardalis.GuardClauses	Ensures domain invariants and argument validation
+FluentResults	Provides a clean, expressive structure for return results
+
+No database, UI, API, or third-party application logic is allowed here.
+
+3.9 Domain Layer Principles
+
+To preserve purity and correctness of the domain:
+
+✔ Must:
+
+Contain business rules
+
+Stay independent from external frameworks
+
+Contain only logic essential to the domain
+
+❌ Must NOT:
+
+Use EF Core attributes
+
+Access a database
+
+Depend on Infrastructure or WebAPI
+
+Contain mapping logic
+
+Contain MediatR handlers
+
+Contain DTOs
+----------------------------------------------------------
+4. Application Layer
+4.1 Purpose of the Application Layer
+
+The Application Layer sits just outside the Domain Layer. Its primary role is to coordinate tasks and implement use cases without containing business rules itself.
+
+Responsibilities include:
+
+Orchestrating domain entities for specific operations
+
+Implementing application workflows
+
+Defining interfaces for infrastructure services (repositories, email, logging, etc.)
+
+Mapping data between domain models and external representations (DTOs)
+
+Validating input and commands
+
+The Application Layer depends on the Core layer but has no knowledge of infrastructure or presentation details.
+
+4.2 Key Components
+4.2.1 Use Cases / Handlers
+
+Use cases implement the business operations required by the system.
+They are typically structured with CQRS (Command & Query Responsibility Segregation) using MediatR.
+
+Folder structure example:
+
+Application/Features/
+    **Users/**
+
+        **Commands/**
+
+            **CreateUserCommand.cs**
+
+            **UpdateUserCommand.cs**
+
+        **Queries/**
+
+            **GetUserByIdQuery.cs**
+
+            **GetAllUsersQuery.cs**
+
+
+
+
+
+
+
+Commands: Modify state (e.g., Create, Update, Delete)
+
+Queries: Read-only operations that return data
+
+Handlers implement the logic by orchestrating Domain Entities, validating rules, and calling Infrastructure interfaces.
+
+4.2.2 DTOs (Data Transfer Objects)
+
+DTOs decouple the internal domain model from external systems (WebAPI, Messaging, etc.).
+
+Example folder:
+
+Application/DTOs/
+    **UserDto.cs**
+
+    **OrderDto.cs**
+
+
+
+
+
+
+
+DTOs are used in:
+
+Commands and Queries
+
+Responses to APIs or external consumers
+
+4.2.3 Interfaces
+
+The Application Layer defines interfaces that are implemented in the Infrastructure layer.
+
+Example interfaces:
+
+Application/Interfaces/
+    **IUserRepository.cs**
+
+    **IEmailService.cs**
+
+
+
+
+
+
+
+Define contracts for persistence, messaging, or external service interactions
+
+Ensure Core and Application remain independent from infrastructure implementation
+
+4.2.4 Mapping & Validation
+
+Mapping and validation ensure correct and safe flow of data.
+
+Mapping:
+
+Uses AutoMapper to convert between DTOs and domain entities
+
+Keeps handlers clean and avoids repetitive boilerplate
+
+Validation:
+
+Uses FluentValidation for input validation of commands and DTOs
+
+Keeps the application robust and reduces invalid state errors
+
+Example folder structure:
+
+Application/Mappings/
+Application/Validators/
+
+4.2.5 Application Behaviors (Optional)
+
+You can include MediatR pipeline behaviors to implement cross-cutting concerns:
+
+Logging
+
+Validation
+
+Transaction handling
+
+Caching
+
+Folder example:
+
+Application/Behaviors/
+
+
+This keeps the logic consistent and reusable across all use cases.
+
+4.3 Dependencies
+Layer	References
+Application	Core
+
+Allowed:
+
+Can use Core entities, value objects, domain services
+
+Can define interfaces for infrastructure implementations
+
+Not allowed:
+
+No direct reference to Infrastructure
+
+No reference to WebAPI
+
+Infrastructure layer will implement Application interfaces to complete dependency inversion.
+
+4.4 Folder Structure Inside Application
+Application
+│── Features/
+│     ├── [ModuleName]/
+│     │     ├── Commands/
+│     │     └── Queries/
+│── Interfaces/
+│── DTOs/
+│── Mappings/
+│── Validators/
+│── Behaviors/ (optional)
+
+4.5 Principles of the Application Layer
+✔ Must:
+
+Orchestrate use cases
+
+Define interfaces for infrastructure services
+
+Validate commands and queries
+
+Map between DTOs and domain models
+
+❌ Must NOT:
+
+Contain domain logic (business rules)
+
+Persist data directly
+
+Implement external services
+
+Reference WebAPI
+
+This structure ensures separation of concerns, testability, and clean dependency direction.
+-----------------------------------------------------------------------------
+5. Infrastructure Layer
+5.1 Purpose of the Infrastructure Layer
+
+The Infrastructure Layer provides concrete implementations for the abstractions defined in the Application Layer.
+It handles external concerns such as:
+
+Database access and ORM setup
+
+Repository implementations
+
+Email, SMS, or third-party service integrations
+
+Logging, caching, and configuration management
+
+Infrastructure is the only layer allowed to depend on external frameworks and services. It serves the Application Layer while keeping the Core isolated and independent.
+
+5.2 Key Responsibilities
+5.2.1 Persistence / Database
+
+Implements repositories defined in Application interfaces
+
+Configures Entity Framework Core DbContext
+
+Defines entity configurations (Fluent API)
+
+Handles migrations and database setup
+
+Typical folder structure:
+
+Infrastructure/Persistence/
+    **ApplicationDbContext.cs**
+
+    **Configurations/**
+
+    **Repositories/**
+
+    **Migrations/**
+
+
+
+
+
+
+
+Example tasks:
+
+UserRepository implements IUserRepository
+
+Configure table relationships and keys in Configurations/
+
+5.2.2 External Services
+
+Infrastructure handles all interactions with third-party or external systems.
+
+Examples:
+
+Email (MailKit)
+
+File storage
+
+HTTP API clients
+
+Payment gateways
+
+Folder structure example:
+
+Infrastructure/Services/
+    **EmailService.cs**
+
+    **PaymentService.cs**
+
+
+
+
+
+
+
+Dependency: Implements interfaces defined in the Application Layer.
+
+5.2.3 Logging / Caching
+
+Infrastructure is responsible for cross-cutting concerns that involve external systems, such as:
+
+Logging (e.g., Serilog, Microsoft.Extensions.Logging)
+
+Caching (MemoryCache, Redis, etc.)
+
+Folder structure example:
+
+Infrastructure/Logging/
+Infrastructure/Caching/
+
+5.2.4 Configuration & Dependency Injection
+
+The Infrastructure Layer also provides extension methods to register its services for Dependency Injection.
+
+Example:
+
+Infrastructure/DependencyInjection/
+    **InfrastructureServiceRegistration.cs**
+
+
+
+
+
+
+
+This ensures that services like repositories, email providers, and DbContext are registered and available in WebAPI startup.
+
+5.3 Dependencies
+Layer	References
+Infrastructure	Application, Core
+
+Allowed:
+
+Can implement interfaces from Application
+
+Can use Core entities and value objects
+
+Not Allowed:
+
+Directly reference WebAPI
+
+Contain business rules (these must stay in Core)
+
+Infrastructure follows the Dependency Inversion Principle: high-level modules (Application) define abstractions, low-level modules (Infrastructure) implement them.
+
+5.4 Folder Structure Inside Infrastructure
+Infrastructure
+│── Persistence/
+│     ├── ApplicationDbContext.cs
+│     ├── Configurations/
+│     └── Repositories/
+│── Services/
+│     ├── EmailService.cs
+│     └── [Other external services]/
+│── Logging/
+│── Caching/
+│── DependencyInjection/
+│── External/
+
+5.5 Packages Used
+Package	Purpose
+Microsoft.EntityFrameworkCore	ORM for database operations
+Microsoft.EntityFrameworkCore.SqlServer	SQL Server provider
+Microsoft.EntityFrameworkCore.Tools & Design	Migrations and tooling
+MailKit	Email sending
+Microsoft.Extensions.Configuration	Configuration management
+Microsoft.Extensions.Logging	Logging infrastructure
+5.6 Principles of the Infrastructure Layer
+✔ Must:
+
+Implement Application interfaces
+
+Encapsulate all external dependencies
+
+Keep the Core and Application layers independent of frameworks
+
+Provide reusable services for multiple applications
+
+❌ Must NOT:
+
+Contain domain logic or business rules
+
+Reference WebAPI
+
+Include MediatR or CQRS logic (belongs to Application)
+
+**This ensures that all external concerns are isolated, making the system easier to maintain, test, and extend.
+6.	WebAPI Layer**
+6.1 Purpose of the WebAPI Layer
+
+The WebAPI Layer is the presentation layer of the application. Its primary responsibility is to expose the Application Layer’s functionality to external clients (e.g., browsers, mobile apps, other services) via HTTP endpoints.
+
+Responsibilities include:
+
+Handling HTTP requests and responses
+
+Routing and controller logic
+
+Authentication and authorization
+
+Input validation and error handling
+
+Integrating with Swagger / OpenAPI for documentation
+
+Registering services for Dependency Injection
+
+The WebAPI Layer depends on Application and Infrastructure, but never on Core directly.
+
+6.2 Key Components
+6.2.1 Controllers
+
+Controllers handle HTTP requests and map them to Application Layer use cases (Commands/Queries).
+
+Folder structure:
+
+WebAPI/Controllers/
+    **UsersController.cs**
+
+    **OrdersController.cs**
+
+
+
+
+
+
+
+Controllers should be thin: delegate business logic to Application Layer handlers
+
+Use Dependency Injection to access Application services
+
+6.2.2 API Response Structure
+
+Define consistent response models (DTOs or wrapper objects)
+
+Handle success and error results using FluentResults or custom response objects
+
+Avoid exposing domain entities directly to clients
+
+6.2.3 Authentication & Authorization
+
+Use ASP.NET Core Identity, JWT, or OAuth as required
+
+Apply policies and roles for securing endpoints
+
+Keep authentication logic in middleware or services
+
+Folder example:
+
+WebAPI/Configurations/
+    **AuthenticationConfig.cs**
+
+
+
+
+6.2.4 Exception Handling & Middleware
+
+Centralized exception handling ensures that all errors are caught and returned consistently.
+
+Folder example:
+
+WebAPI/Middlewares/
+    **ExceptionHandlingMiddleware.cs**
+
+    **LoggingMiddleware.cs**
+
+
+
+
+
+
+
+Responsibilities:
+
+Transform exceptions into HTTP responses
+
+Log errors using Infrastructure logging services
+
+Optionally implement custom middleware for CORS, rate limiting, etc.
+
+6.2.5 Filters / Global Policies
+
+Model validation filters
+
+Action filters for cross-cutting concerns
+
+Authorization filters
+
+Folder example:
+
+WebAPI/Filters/
+
+6.2.6 Dependency Injection (DI) Setup
+
+The WebAPI Layer registers all required services:
+
+Application Layer services and handlers
+
+Infrastructure services (repositories, email, external APIs)
+
+Logging, configuration, caching, etc.
+
+Folder example:
+
+WebAPI/DependencyInjection/
+    **WebAPIServiceRegistration.cs**
+
+
+
+
+6.2.7 Swagger / OpenAPI Integration
+
+Swagger is configured to document all API endpoints
+
+Provides interactive API documentation for developers and testers
+
+6.3 Dependencies
+Layer	References
+WebAPI	Application, Infrastructure
+
+Allowed:
+
+Can call Application services
+
+Can use Infrastructure services
+
+Not Allowed:
+
+Directly reference Core
+
+All business logic must reside in Application/Core layers. WebAPI should only handle presentation concerns.
+
+6.4 Folder Structure Inside WebAPI
+WebAPI
+│── Controllers/
+│── Middlewares/
+│── DependencyInjection/
+│── Configurations/
+│── Filters/
+│── wwwroot/ (static files if needed)
+│── Properties/
+
+6.5 Packages Used
+Package	Purpose
+Microsoft.AspNetCore.*	Core ASP.NET WebAPI functionality
+Microsoft.AspNetCore.Cors	Enable CORS policies
+Microsoft.AspNetCore.Identity	Authentication & user management
+Microsoft.AspNetCore.OpenApi / Swashbuckle	API documentation and Swagger
+Microsoft.IdentityModel.Tokens	JWT authentication
+Newtonsoft.Json	JSON serialization
+6.6 Principles of the WebAPI Layer
+✔ Must:
+
+Handle HTTP requests and route them to Application services
+
+Implement input validation and error handling
+
+Register Application and Infrastructure services
+
+Provide API documentation
+
+❌ Must NOT:
+
+Contain business rules
+
+Contain domain logic
+
+Access the database directly
+
+Implement MediatR handlers (belongs to Application)
+
+**This ensures the WebAPI Layer remains a thin, maintainable, and framework-dependent layer, exposing the application safely and consistently.
+7.	Cross-Cutting Concerns**
+7.1 Purpose of Cross-Cutting Concerns
+
+Cross-cutting concerns are functionalities that affect multiple layers of the application but do not belong to any single layer’s core responsibilities.
+
+Examples include:
+
+Validation
+
+Logging
+
+Error handling
+
+Configuration management
+
+Dependency Injection
+
+Caching
+
+Security
+
+Centralizing these concerns helps reduce duplication, improve maintainability, and enforce consistent practices throughout the application.
+
+7.2 Validation
+7.2.1 Command / DTO Validation
+
+Validation is primarily done in the Application Layer using FluentValidation.
+
+Ensures that incoming data for commands and queries is correct before executing business logic.
+
+Example folder:
+
+Application/Validators/
+    **CreateUserCommandValidator.cs**
+
+    **UpdateOrderCommandValidator.cs**
+
+
+
+
+7.2.2 Model Validation
+
+WebAPI controllers can automatically enforce validation rules.
+
+Validation failures are returned consistently to clients.
+
+7.3 Error Handling
+7.3.1 Domain-Level Errors
+
+Handled in Core using FluentResults for consistent result patterns.
+
+Ensures business rules produce clear success/failure results without throwing exceptions unnecessarily.
+
+7.3.2 Application & WebAPI Errors
+
+Exceptions in Application or Infrastructure are handled centrally in WebAPI middleware.
+
+Logs errors and returns meaningful HTTP responses.
+
+Example folder:
+
+WebAPI/Middlewares/
+    **ExceptionHandlingMiddleware.cs**
+
+
+
+
+7.4 Logging
+
+Logging is implemented in the Infrastructure Layer and exposed to all layers via interfaces.
+
+Ensures consistent logging strategy across the application.
+
+Can integrate with Serilog, Microsoft.Extensions.Logging, or custom providers.
+
+Example folder:
+
+Infrastructure/Logging/
+
+7.5 Dependency Injection (DI)
+
+All services, repositories, and handlers are registered in a centralized manner.
+
+Each layer has its own DI registration class:
+
+Infrastructure/DependencyInjection/InfrastructureServiceRegistration.cs
+WebAPI/DependencyInjection/WebAPIServiceRegistration.cs
+
+
+Supports loose coupling, making testing and swapping implementations easier.
+
+7.6 Configuration Management
+
+All configurations (connection strings, API keys, environment variables) are handled via Microsoft.Extensions.Configuration.
+
+Environment-specific settings are supported via appsettings.{Environment}.json files.
+
+Avoids hardcoding any configuration values in code.
+
+Example:
+
+WebAPI/Configurations/
+Infrastructure/Configurations/
+
+7.7 Security & Authentication
+
+Security policies, authentication, and authorization are configured in WebAPI layer.
+
+Uses ASP.NET Core Identity, JWT tokens, or OAuth as needed.
+
+Keeps security concerns separated from business logic.
+
+7.8 Caching
+
+Infrastructure layer can implement caching mechanisms (in-memory or distributed cache) to improve performance.
+
+Application layer services can interact with caching through interfaces to avoid direct dependency on caching frameworks.
+
+7.9 Principles of Cross-Cutting Concerns
+✔ Must:
+
+Be centralized when possible
+
+Be reusable across layers
+
+Follow dependency rules: outer layers can use inner abstractions, not the other way around
+
+❌ Must NOT:
+
+Contain business logic (belongs in Core)
+
+Directly couple unrelated layers
+
+**Cross-cutting concerns help keep your Onion Architecture clean, maintainable, and consistent, while avoiding duplication across layers.
+8.	How to Use the Template**
+8.1 Prerequisites
+
+Before using the template, ensure the following tools are installed:
+
+.NET 8 SDK
+
+Visual Studio 2022 / VS Code / Rider
+
+SQL Server or other supported database (if using EF Core with SQL Server)
+
+Optional: Postman / Swagger UI for API testing
+
+8.2 Creating a New Project Using the Template
+Step 1: Clone or Copy the Template
+
+Clone the template repository or copy the template folder into your working directory.
+
+Ensure the solution structure remains intact: Core, Application, Infrastructure, WebAPI.
+
+Step 2: Open the Solution
+
+Open the .sln file in Visual Studio or your preferred IDE.
+
+Restore NuGet packages (dotnet restore or via IDE).
+
+8.3 Configuring the Database
+
+Update the connection string in WebAPI/appsettings.json or Infrastructure/Configurations/.
+
+Apply migrations to set up the database:
+
+cd Infrastructure
+dotnet ef database update
+
+
+This will create the database with all configured entities.
+
+8.4 Adding a New Feature
+
+To add a new feature, follow the Onion Architecture layers:
+
+Step 1: Core Layer
+
+Add domain entities, value objects, or domain events if needed.
+
+Implement business rules within entities or value objects.
+
+Step 2: Application Layer
+
+Create Commands or Queries for the feature inside Application/Features/{Module}.
+
+Create DTOs in Application/DTOs.
+
+Add FluentValidation rules in Application/Validators.
+
+Map entities to DTOs using AutoMapper in Application/Mappings.
+
+Step 3: Infrastructure Layer
+
+Implement repository or service interfaces from Application in Infrastructure/Repositories or Infrastructure/Services.
+
+Ensure all external dependencies are isolated here.
+
+Step 4: WebAPI Layer
+
+Add controllers in WebAPI/Controllers to expose your feature via HTTP endpoints.
+
+Use Dependency Injection to inject Application services.
+
+Apply authentication, validation, and logging as needed.
+
+8.5 Dependency Injection Setup
+
+WebAPI registers services for Application and Infrastructure via:
+
+WebAPIServiceRegistration.RegisterServices(IServiceCollection services);
+InfrastructureServiceRegistration.RegisterServices(IServiceCollection services);
+
+
+This ensures all layers are wired correctly.
+
+8.6 Running the Application
+
+Build the solution (dotnet build or via IDE).
+
+Run the WebAPI project (OnionTemplate.WebAPI) as the startup project.
+
+Access Swagger at https://localhost:{port}/swagger to test endpoints.
+
+Optionally, run automated tests (if included in template).
+
+8.7 Testing Features
+
+Use unit tests for Core and Application layers.
+
+Use integration tests for WebAPI endpoints.
+
+Ensure business rules are validated in Core, not WebAPI.
+
+8.8 Adding New Dependencies
+
+Add NuGet packages only in the layers that require them.
+
+Avoid adding infrastructure-specific packages to Core or Application.
+
+Always respect the dependency direction:
+
+WebAPI → Application → Core
+Infrastructure → Application → Core
+
+8.9 Best Practices for Using the Template
+
+Keep Core layer independent and framework-agnostic.
+
+Always implement application logic in Application layer, not WebAPI.
+
+Implement infrastructure concerns only in Infrastructure layer.
+
+Keep WebAPI controllers thin and delegate to Application services.
+
+Use MediatR, AutoMapper, FluentValidation, and FluentResults consistently.
+
+Document new features in the solution for maintainability.
+
+**This section ensures that developers can quickly start, extend, and maintain applications using your Onion Architecture template.
+9.	Best Practices and Guidelines**
+9.1 Layered Architecture Guidelines
+
+Core Layer (Domain):
+
+Keep pure business logic here.
+
+Avoid dependencies on frameworks, databases, or external packages, except lightweight tools like FluentResults or Ardalis.GuardClauses.
+
+Use entities, value objects, and domain events to encapsulate rules.
+
+Always validate invariants inside domain models, not in Application or WebAPI.
+
+Application Layer:
+
+Implement use cases using Commands/Queries (CQRS) and MediatR handlers.
+
+Map between domain entities and DTOs using AutoMapper.
+
+Validate input with FluentValidation.
+
+Define interfaces for infrastructure dependencies (repositories, email, logging).
+
+Infrastructure Layer:
+
+Implement interfaces from Application.
+
+Encapsulate all external dependencies: databases, email, logging, caching.
+
+Avoid business logic here; keep it focused on communication with external systems.
+
+WebAPI Layer:
+
+Controllers should be thin, only handling HTTP requests and responses.
+
+Implement middleware for error handling, logging, and authentication.
+
+Use Swagger/OpenAPI for documentation.
+
+Register all dependencies using DI.
+
+9.2 Dependency Principles
+
+Direction of dependencies:
+
+WebAPI → Application → Core
+Infrastructure → Application → Core
+
+
+Do not let Core depend on Application or Infrastructure.
+
+Follow Dependency Inversion Principle: Application defines interfaces, Infrastructure implements them.
+
+9.3 Naming Conventions
+
+Projects: Use PascalCase matching the layer name: Core, Application, Infrastructure, WebAPI.
+
+Folders: Use PascalCase: Entities, Features, Repositories.
+
+Files / Classes: Match the domain concept or feature, e.g., CreateUserCommandHandler.cs, UserRepository.cs.
+
+DTOs: Suffix with Dto: UserDto, OrderDto.
+
+9.4 Testing Guidelines
+
+Unit Tests:
+
+Target Core and Application layers.
+
+Test business rules, domain invariants, and use-case logic.
+
+Integration Tests:
+
+Target WebAPI endpoints and Infrastructure implementations.
+
+Test database interactions, API responses, and external services.
+
+Best Practices:
+
+Use mocking frameworks for dependencies in Application and Core tests.
+
+Keep tests deterministic and independent.
+
+Follow Arrange-Act-Assert pattern.
+
+9.5 Error Handling and Results
+
+Use FluentResults in Application and Core to return operation results.
+
+Avoid throwing exceptions for business validation failures; instead, return results.
+
+Centralize unhandled exceptions in WebAPI middleware.
+
+9.6 Security Guidelines
+
+Always validate inputs in Application Layer using FluentValidation.
+
+Implement authentication and authorization in WebAPI.
+
+Keep secrets and sensitive configurations in appsettings.{Environment}.json or environment variables.
+
+9.7 Logging and Monitoring
+
+Log errors, warnings, and important events via Infrastructure logging.
+
+Do not log sensitive data (e.g., passwords, tokens).
+
+Use structured logging for better observability.
+
+Optionally integrate with monitoring tools or dashboards.
+
+9.8 Coding Standards
+
+Use consistent naming and indentation.
+
+Keep methods and classes small and focused.
+
+Prefer composition over inheritance where possible.
+
+Ensure separation of concerns: each layer only handles its responsibilities.
+
+Document public APIs and methods with XML comments or Markdown.
+
+9.9 Extending the Template
+
+When adding new modules/features:
+
+Follow the Core → Application → Infrastructure → WebAPI flow.
+
+Keep domain logic in Core, orchestration in Application, external dependencies in Infrastructure, and presentation in WebAPI.
+
+Reuse existing patterns (CQRS, MediatR, FluentValidation, AutoMapper).
+
+Avoid introducing direct dependencies that break the Onion Architecture principles.
+
+9.10 Summary
+
+By following these best practices:
+
+The system remains modular, testable, and maintainable.
+
+Business logic stays independent and reusable.
+
+Changes in infrastructure or presentation do not impact domain rules.
+
+New developers can quickly understand and contribute to the codebase.
