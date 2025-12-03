@@ -4466,19 +4466,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\orchida\\.nuget\\packages\\": {}
+    "C:\\Users\\Administrator\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\3omda\\dev\\OnionTemplete\\src\\WebAPI\\OnionTemplate.WebAPI.csproj",
+      "projectUniqueName": "F:\\3omda\\PROs\\OnionTemplete\\src\\WebAPI\\OnionTemplate.WebAPI.csproj",
       "projectName": "OnionTemplate.WebAPI",
-      "projectPath": "F:\\3omda\\dev\\OnionTemplete\\src\\WebAPI\\OnionTemplate.WebAPI.csproj",
-      "packagesPath": "C:\\Users\\orchida\\.nuget\\packages\\",
-      "outputPath": "F:\\3omda\\dev\\OnionTemplete\\src\\WebAPI\\obj\\",
+      "projectPath": "F:\\3omda\\PROs\\OnionTemplete\\src\\WebAPI\\OnionTemplate.WebAPI.csproj",
+      "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
+      "outputPath": "F:\\3omda\\PROs\\OnionTemplete\\src\\WebAPI\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\orchida\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Default\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -4492,11 +4497,11 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "F:\\3omda\\dev\\OnionTemplete\\src\\Application\\OnionTemplate.Application.csproj": {
-              "projectPath": "F:\\3omda\\dev\\OnionTemplete\\src\\Application\\OnionTemplate.Application.csproj"
+            "F:\\3omda\\PROs\\OnionTemplete\\src\\Application\\OnionTemplate.Application.csproj": {
+              "projectPath": "F:\\3omda\\PROs\\OnionTemplete\\src\\Application\\OnionTemplate.Application.csproj"
             },
-            "F:\\3omda\\dev\\OnionTemplete\\src\\Infrastructure\\OnionTemplate.Infrastructure.csproj": {
-              "projectPath": "F:\\3omda\\dev\\OnionTemplete\\src\\Infrastructure\\OnionTemplate.Infrastructure.csproj"
+            "F:\\3omda\\PROs\\OnionTemplete\\src\\Infrastructure\\OnionTemplate.Infrastructure.csproj": {
+              "projectPath": "F:\\3omda\\PROs\\OnionTemplete\\src\\Infrastructure\\OnionTemplate.Infrastructure.csproj"
             }
           }
         }
@@ -4510,7 +4515,8 @@
         "enableAudit": "true",
         "auditLevel": "low",
         "auditMode": "direct"
-      }
+      },
+      "SdkAnalysisLevel": "9.0.200"
     },
     "frameworks": {
       "net8.0": {
@@ -4568,7 +4574,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.206/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.203/PortableRuntimeIdentifierGraph.json"
       }
     }
   },
